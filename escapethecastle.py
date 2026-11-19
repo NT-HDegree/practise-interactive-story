@@ -169,41 +169,7 @@ def corridorEncounter():
     choice = input(f"The {random_creature} suddenly charges! Do you try to dodge or fight?: ").lower()
     
     while playerhealth > 0 and creaturehealth > 0 and isCaptured == False:
-        if choice == "dodge" and playerhealth > 0 and creaturehealth > 0:
-            dodge_success_chance = random.randint(1,6)
-            if dodge_success_chance == 6:
-                creaturehealth = creaturehealth - 10
-                print(f"\nYou dodge so quickly that the {random_creature} becomes confused, and crashes into the wall. The {random_creature} loses 10 health points.")
-                print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
-                if creaturehealth <= 0:
-                    murderer()
-                if creaturehealth > 0 and playerhealth > 0:
-                    choice = input("Do you try to dodge or fight?: ").lower()
-
-            if dodge_success_chance == 4 or 5:
-                print(f"\nYou successfully dodge, rolling out of the way of the {random_creature}'s attack.")
-                print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
-                if creaturehealth > 0 and playerhealth > 0:
-                    choice = input("Do you try to dodge or fight?: ").lower()
-            
-            if dodge_success_chance == 2 or 3:
-                playerhealth = playerhealth - 10
-                print("\nYou barely dodge, being mildly grazed across your arm. You lose 10 health points.")
-                print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
-                if playerhealth <= 0:
-                    gameover()
-                if creaturehealth > 0 and playerhealth > 0:
-                    choice = input("Do you try to dodge or fight?: ").lower()
-                
-            if dodge_success_chance == 1:
-                playerhealth = playerhealth - 20
-                print("\nYou fail to dodge, getting sliced across your chest. You lose 20 health points.")
-                print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
-                if playerhealth <= 0:
-                    gameover()
-                if creaturehealth > 0 and playerhealth > 0:
-                    choice = input("Do you try to dodge or fight?: ").lower()
-        elif choice == "fight" and playerhealth > 0 and creaturehealth > 0 and hasRustyDagger == True:
+        if choice == "fight" and playerhealth > 0 and creaturehealth > 0 and isCaptured == False:
             fight_success_chance = random.randint(1,6)
             if fight_success_chance == 6:
                 creaturehealth = creaturehealth - 20
@@ -212,7 +178,7 @@ def corridorEncounter():
                 print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
                 if creaturehealth <= 0:
                     murderer()
-                if creaturehealth > 0 and playerhealth > 0:
+                elif creaturehealth > 0 and playerhealth > 0:
                     choice = input("Do you try to dodge or fight?: ").lower()
 
             
@@ -223,7 +189,7 @@ def corridorEncounter():
                 print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
                 if creaturehealth <= 0:
                     murderer()
-                if creaturehealth > 0 and playerhealth > 0:
+                elif creaturehealth > 0 and playerhealth > 0:
                     choice = input("Do you try to dodge or fight?: ").lower()
                 
             
@@ -234,7 +200,7 @@ def corridorEncounter():
                 print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
                 if creaturehealth <= 0:
                     murderer()
-                if creaturehealth > 0 and playerhealth > 0:
+                elif creaturehealth > 0 and playerhealth > 0:
                     choice = input("Do you try to dodge or fight?: ").lower()
             
             if fight_success_chance == 3:
@@ -245,13 +211,13 @@ def corridorEncounter():
                 print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
                 if creaturehealth <= 0:
                     murderer()
-                if playerhealth <= 0:
+                elif playerhealth <= 0:
                     gameover()
-                if playerhealth <= 0 and creaturehealth <= 0:
+                elif playerhealth <= 0 and creaturehealth <= 0:
                     print("You finally managed to take the creature down... and got yourself knocked out in the process.")
                     print("Considering how weak both of your attacks were, that's embarrassing for both of you.")
                     isAlive = False
-                if creaturehealth > 0 and playerhealth > 0:
+                elif creaturehealth > 0 and playerhealth > 0:
                     choice = input("Do you try to dodge or fight?: ").lower()
             
             if fight_success_chance == 2:
@@ -261,7 +227,7 @@ def corridorEncounter():
                 print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
                 if playerhealth <= 0:
                     gameover()
-                if creaturehealth > 0 and playerhealth > 0:
+                elif creaturehealth > 0 and playerhealth > 0:
                     choice = input("Do you try to dodge or fight?: ").lower()
             if fight_success_chance == 1:
                 playerhealth = playerhealth - 20
@@ -269,7 +235,41 @@ def corridorEncounter():
                 print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points")
                 if playerhealth <= 0:
                     gameover()
+                elif creaturehealth > 0 and playerhealth > 0:
+                    choice = input("Do you try to dodge or fight?: ").lower()
+        if choice == "dodge" and playerhealth > 0 and creaturehealth > 0:
+            dodge_success_chance = random.randint(1,6)
+            if dodge_success_chance == 6:
+                creaturehealth = creaturehealth - 10
+                print(f"\nYou dodge so quickly that the {random_creature} becomes confused, and crashes into the wall. The {random_creature} loses 10 health points.")
+                print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
+                if creaturehealth <= 0:
+                    murderer()
+                elif creaturehealth > 0 and playerhealth > 0:
+                    choice = input("Do you try to dodge or fight?: ").lower()
+        
+            if dodge_success_chance == 4 or 5:
+                print(f"\nYou successfully dodge, rolling out of the way of the {random_creature}'s attack.")
+                print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
                 if creaturehealth > 0 and playerhealth > 0:
+                    choice = input("Do you try to dodge or fight?: ").lower()
+                    
+            if dodge_success_chance == 2 or 3:
+                playerhealth = playerhealth - 10
+                print("\nYou barely dodge, being mildly grazed across your arm. You lose 10 health points.")
+                print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
+                if playerhealth <= 0:
+                    gameover()
+                elif creaturehealth > 0 and playerhealth > 0:
+                    choice = input("Do you try to dodge or fight?: ").lower()
+                        
+            if dodge_success_chance == 1:
+                playerhealth = playerhealth - 20
+                print("\nYou fail to dodge, getting sliced across your chest. You lose 20 health points.")
+                print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
+                if playerhealth <= 0:
+                    gameover()
+                elif creaturehealth > 0 and playerhealth > 0:
                     choice = input("Do you try to dodge or fight?: ").lower()
         elif choice == "surrender":
             print("You give in! You are not so gently shoved back towards the cell, where you are locked in. Have fun doing that again.")
@@ -277,16 +277,17 @@ def corridorEncounter():
         else:
             playerhealth = playerhealth - 20
             print("That is not an option. In your hesitation you are attacked, and you lose 20 health points.")
+            print(f"Your health is {playerhealth} health points and the {random_creature}'s is {creaturehealth} health points.")
             if playerhealth <= 0:
                 gameover()
             if creaturehealth > 0 and playerhealth > 0:
                 choice = input("Do you try to dodge or fight?: ").lower()
 
 corridorEncounter()
-# while isCaptured == True:
-#     cell()
-#     corridor()
-#     corridorEncounter()
+while isCaptured == True:
+    cell()
+    corridor()
+    corridorEncounter()
 
 def corridor2():
     hasGateKey = False
@@ -303,6 +304,7 @@ def corridor2():
         choice = input("Are you going to open the door?: ")
 
 def library():
+    hasLeft = False
     print("\n You wander into the library, looking around at the impressive architecture.")
     print("Three areas in particular catch your eye.")
     print("The great row of bookshelves, stuffed with books and scrolls")
